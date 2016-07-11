@@ -1,0 +1,12 @@
+<body>
+  <script src="./jscolor.min.js"></script>
+  {{>App_body}}
+</body>
+
+<template name="App_body">
+  {{> Template.dynamic template=main}}
+</template>
+
+<template name="hello">
+  Hello
+</template>

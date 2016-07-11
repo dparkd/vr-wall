@@ -1,0 +1,40 @@
+<template name="draw_canvas">
+  This is wher you draw your shit
+
+  <div id="container"></div>
+
+  <div id="color-picker">
+    <form class="pickColor">
+      <input name="color2" type="hidden" id="color_value" value="ffffff">
+      <button class="jscolor {valueElement: 'color_value'}">Pick a color</button>
+      <input type="submit">
+    </form>
+  </div>
+
+  <div id="pen-radius">
+    <button class="decreaseR">-</button>
+    <div id="currentRadius" style="width: {{penRadius}}px; height: {{penRadius}}px; background: {{penColor}};"></div>
+    <button class="increaseR">+</button>
+  </div>
+
+  <div id="wall">
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+    <canvas class="copy"></canvas>
+  </div>
+
+
+</template>

@@ -1,0 +1,14 @@
+{
+  "name": "vr-wall",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "color-tool": "^1.0.3",
+    "color2": "^1.0.8",
+    "inherits": "^2.0.1",
+    "meteor-node-stubs": "^0.2.3",
+    "sketch-js": "^1.1.1"
+  }
+}
