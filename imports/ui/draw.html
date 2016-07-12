@@ -1,40 +1,57 @@
 <template name="draw_canvas">
-  This is wher you draw your shit
+  <div class="wrapper">
+    <div class="row">
+      <div class="six columns">
 
-  <div id="container"></div>
+        <div class="drawing-controls row">
+          <div id="color-picker" class="twelve columns">
+            <form class="pickColor">
+              <input name="color2" type="hidden" id="color_value" value="ffffff">
+              <button class="jscolor {valueElement: 'color_value', width:200, height:100, padding: 10, shadow:false, borderWidth:0, backgroundColor:'#f1f1f1', insetColor:'rgba(0,0,0,0)', borderRadius: 2}">Pick Color</button>
+              <input type="submit" value="Choose Color" class="submit-button {{#if colorChange}}active{{/if}}">
+            </form>
+          </div>
 
-  <div id="color-picker">
-    <form class="pickColor">
-      <input name="color2" type="hidden" id="color_value" value="ffffff">
-      <button class="jscolor {valueElement: 'color_value'}">Pick a color</button>
-      <input type="submit">
-    </form>
+          <!-- <div class="six columns color-history">
+            {{#each colors}}
+              <a class="pickFromHistory" ><i class="fa fa-circle" style="color: {{this}};" data-color="{{this}}"></i></a>
+            {{/each}}
+          </div> -->
+
+          <!-- <div id="pen-radius" class="three columns">
+            <button class="decreaseR">-</button>
+            <div id="currentRadius" style="width: {{penRadius}}px; height: {{penRadius}}px; background: {{penColor}};"></div>
+            <button class="increaseR">+</button>
+          </div> -->
+        </div>
+
+        <div id="draw-area"></div>
+      </div>
+      <div class="six columns">
+          <div id="wall">
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+          </div>
+      </div>
+    </div>
   </div>
 
-  <div id="pen-radius">
-    <button class="decreaseR">-</button>
-    <div id="currentRadius" style="width: {{penRadius}}px; height: {{penRadius}}px; background: {{penColor}};"></div>
-    <button class="increaseR">+</button>
-  </div>
+  
 
-  <div id="wall">
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-    <canvas class="copy"></canvas>
-  </div>
 
 
 </template>
