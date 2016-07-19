@@ -14,10 +14,10 @@ import './draw.html';
 
 // Global Variables
 // Pen Color
-var lineColor = '#FFFFFF';
+var lineColor = '#2E93FF';
 Session.set('penColor', lineColor);
 // Color History
-var colorHistory = ['#333333']; 
+var colorHistory = ['#2E93FF']; 
 Session.set('colorHistory', colorHistory);
 // Pen Radius
 var currentRadius = 20;
@@ -74,6 +74,17 @@ Template.draw_canvas.events({
     e.preventDefault(); 
     var color = e.target.getAttribute('data-color');
     Session.set('penColor', color);
+  },
+
+  // Export Image and save locally 
+  'click .save-image'(e) {
+    e.preventDefault(); 
+    var wall = document.getElementById( 'wall' );
+    html2canvas(wall, {
+    onrendered: function(canvas) {
+      Canvas2Image.saveAsJPEG(canvas, 500, 500)
+    }
+});
   }
 });
 
@@ -103,8 +114,9 @@ Template.draw_canvas.onRendered( function() {
       container: document.getElementById( 'draw-area' ),
       autoclear: false,
       fullscreen: false,
-      width: 400, 
-      height: 400, 
+      background: '#ffffff',
+      width: 600, 
+      height: 600, 
 
       setup: function() {
         draw = false;

@@ -1,8 +1,20 @@
 <body>
   <script src="./jscolor.min.js"></script>
+  <script src="./html2canvas.js"></script>
+  <script src="./canvas2image.js"></script>
   {{>App_body}}
+
+  {{>footer}}
 </body>
 
 <template name="App_body">
   {{> Template.dynamic template=main}}
+</template>
+
+<template name="footer">
+  <div class="row footer">
+    <div class="twelve columns">
+      <p>Crafted by <a href="http://itsdpark.com" target="_blank">Daniel Park</a></p>
+    </div>
+  </div>
 </template>

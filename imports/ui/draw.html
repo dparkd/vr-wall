@@ -1,34 +1,55 @@
 <template name="draw_canvas">
   <div class="wrapper">
     <div class="row">
-      <div class="six columns">
+      <div class="eight columns">
 
         <div class="drawing-controls row">
-          <div id="color-picker" class="twelve columns">
-            <form class="pickColor">
-              <input name="color2" type="hidden" id="color_value" value="ffffff">
-              <button class="jscolor {valueElement: 'color_value', width:200, height:100, padding: 10, shadow:false, borderWidth:0, backgroundColor:'#f1f1f1', insetColor:'rgba(0,0,0,0)', borderRadius: 2}">Pick Color</button>
-              <input type="submit" value="Choose Color" class="submit-button {{#if colorChange}}active{{/if}}">
-            </form>
+
+          <div class="twelve columns draw-area">
+            <h1>Canvas</h1>
+            <p>Tip: Don't let go of mouse outside the canvas</p>
+            <div id="draw-area"></div>
           </div>
 
-          <!-- <div class="six columns color-history">
+          <div id="color-picker" class="twelve columns">
+            <form class="pickColor">
+              <input name="color2" type="hidden" id="color_value" value="2E93FF">
+              <button class="jscolor {valueElement: 'color_value', width:200, height:100, padding: 10, shadow:false, borderWidth:0, backgroundColor:'#f1f1f1', insetColor:'rgba(0,0,0,0)', borderRadius: 2}">Change Color</button>
+              <input type="submit" value="Submit" class="submit-button {{#if colorChange}}active{{/if}}">
+            </form>
+            
+            <div class="pen-size">
+              <button class="decreaseR">-</button>
+              <div id="currentRadius" style="width: {{penRadius}}px; height: {{penRadius}}px; background: {{penColor}};"></div>
+              <button class="increaseR">+</button>
+            </div>
+          </div>
+
+          <div id="pen-radius" class="twelve columns">
+            
+          </div>
+            
+
+          <div class="twelve columns color-history">
+            <h2 class="label">Color History</h2>
             {{#each colors}}
               <a class="pickFromHistory" ><i class="fa fa-circle" style="color: {{this}};" data-color="{{this}}"></i></a>
             {{/each}}
-          </div> -->
-
-          <!-- <div id="pen-radius" class="three columns">
-            <button class="decreaseR">-</button>
-            <div id="currentRadius" style="width: {{penRadius}}px; height: {{penRadius}}px; background: {{penColor}};"></div>
-            <button class="increaseR">+</button>
-          </div> -->
+          </div>
         </div>
 
-        <div id="draw-area"></div>
       </div>
-      <div class="six columns">
+      <div class="four columns">
           <div id="wall">
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
+            <canvas class="copy"></canvas>
             <canvas class="copy"></canvas>
             <canvas class="copy"></canvas>
             <canvas class="copy"></canvas>
@@ -49,7 +70,11 @@
       </div>
     </div>
   </div>
-
+  
+  <div id="to-vr">
+    <a class="button save-image">Save Image Locally</a>
+    <!-- <a class="button" href="/vr-wall" target="_blank">Check it out in VR</a> -->
+  </div>
   
 
 
