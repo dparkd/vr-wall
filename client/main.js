@@ -1,7 +1,7 @@
 FlowRouter.route('/', {
   name: 'Home',
   action() {
-    BlazeLayout.render('App_body', {main: 'hello'});
+    BlazeLayout.render('App_body', {main: 'draw_canvas'});
   }
 });
 
