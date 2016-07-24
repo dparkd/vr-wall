@@ -12,11 +12,13 @@ FlowRouter.route('/draw', {
   }
 });
 
-FlowRouter.route('/vr-wall', {
+FlowRouter.route('/vr/:_id', {
   name: 'Canvas On VR WALL',
-  action() {
-    BlazeLayout.render('App_body', {main: 'vr_wall'});
+  action(params) {
+    BlazeLayout.render('App_body', {
+      main: 'vr_wall',
+      data: params
+    });
   }
 });
-
 import '../imports/ui/body.js';

@@ -2,8 +2,11 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Session } from 'meteor/session';
 
+import { Images } from '../api/images.js';
+
 import Sketch from 'sketch-js';
 const sketch = require('sketch-js');
+
 
 
 /*============================= 
@@ -36,6 +39,10 @@ function cloneCanvas(oldCanvas) {
     context.drawImage(oldCanvas, 0, 0);
   }
 }
+
+Template.draw_canvas.onCreated(function bodyOnCreated() {
+  Meteor.subscribe('images');
+});
 
 // Template Events
 Template.draw_canvas.events({
@@ -82,9 +89,26 @@ Template.draw_canvas.events({
     var wall = document.getElementById( 'wall' );
     html2canvas(wall, {
     onrendered: function(canvas) {
-      Canvas2Image.saveAsJPEG(canvas, 500, 500)
-    }
-});
+      Canvas2Image.saveAsImage(canvas, 500, 500, "jpeg")
+        }
+    });
+  }, 
+
+  // save image to db and go to new route 
+  'click .go-vr'(e) {
+    e.preventDefault(); 
+    var wall = document.getElementById('wall');
+    var img; 
+
+    html2canvas(wall, {
+      onrendered: function(canvas) {
+        img = Canvas2Image.convertToImage(canvas, 500, 500, "jpeg");
+        img = img.src;
+        Meteor.call('saveFile.insert', img, function(error, result){
+          FlowRouter.go('/vr/' + result.toString());
+        });
+      }
+    })
   }
 });
 
@@ -104,6 +128,10 @@ Template.draw_canvas.helpers({
 
   colorChange() {
     return Session.get('colorChange');
+  },
+
+  images() {
+    return Images.find({});
   }
 })
 
